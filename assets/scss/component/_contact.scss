@@ -1,0 +1,195 @@
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.contact {
+	padding: 120px 0;
+
+	@include sp {
+		margin-top: 40px;
+		background-image: url(../img/contact_bg_sp.svg);
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 100% auto;
+	}
+
+	@include sp {
+		.section-header {
+			padding: 0 16px;
+			margin-top: 20px;
+
+			&__num {
+				color: $bg;
+			}
+
+			&__sub {
+				color: $bg;
+			}
+		}
+	}
+
+	&__container {
+		width: 846px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+
+		@include sp {
+			padding: 0 16px;
+		}
+	}
+
+	&__text {
+		font-family: $font-jp;
+		font-size: 20px;
+		letter-spacing: 0.05em;
+
+		ul {
+			margin-top: 20px;
+			li {
+				line-height: 1.8em;
+			}
+		}
+
+		@include sp {
+			display: none;
+		}
+	}
+
+	&__cta {
+		text-align: center;
+
+		.cta-button {
+			position: relative;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+
+			width: 438px;
+			height: 160px;
+
+			box-sizing: border-box;
+			border: 1px solid $main;
+			border-radius: 80px;
+			background: $bg;
+
+			font-size: 32px;
+			font-weight: $fw-medium;
+			text-decoration: none;
+
+			overflow: hidden;
+
+			transition:
+				background-color 0.5s ease,
+				color 0.5s ease;
+
+			&:hover {
+				background-color: #e4d9d4;
+			}
+		}
+
+		.cta-text {
+			position: relative;
+			z-index: 2;
+		}
+
+		.cta-bg {
+			position: absolute;
+			right: 40px;
+			bottom: 24px;
+
+			font-family: $font-accent;
+			font-size: 32px;
+			color: $second;
+
+			transform: rotate(-10deg);
+		}
+
+		.cta-note {
+			margin-top: 56px;
+			font-family: $font-jp;
+			font-size: 20px;
+			line-height: 1;
+
+			@include sp {
+				font-size: 12px;
+			}
+		}
+
+		.cta-sns {
+			position: relative;
+			margin: 40px auto 0 auto;
+			width: 316px;
+		}
+
+		.cta-follow {
+			position: absolute;
+			left: 0;
+			top: 14px;
+
+			font-family: $font-accent;
+			font-size: 24px;
+			color: rgba($second, 0.5);
+
+			transform: rotate(-10deg);
+
+			@include sp {
+				display: none;
+			}
+		}
+
+		.sns-list {
+			display: flex;
+			justify-content: flex-end;
+			gap: 16px;
+			@include sp {
+				justify-content: center;
+			}
+		}
+
+		.sns-btn {
+			width: 60px;
+			height: 60px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			img {
+				transition: transform 0.25s ease;
+			}
+
+			&:hover img {
+				transform: scale(1.08);
+			}
+		}
+	}
+}
+
+@media (max-width: $sp) {
+	.contact {
+		&__container {
+			width: 100%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: column;
+		}
+
+		&__cta {
+			text-align: center;
+
+			.cta-button {
+				width: 328px;
+				height: 120px;
+				border-radius: 60px;
+				font-size: 24px;
+			}
+
+			.cta-bg {
+				right: 40px;
+				bottom: 24px;
+				font-size: 24px;
+			}
+		}
+	}
+}

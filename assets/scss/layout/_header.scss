@@ -1,0 +1,313 @@
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.header {
+	width: 100%;
+	background: $bg;
+	z-index: $z-header;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: $bg;
+	transition:
+		background 0.4s ease,
+		box-shadow 0.4s ease;
+
+	&.is-scrolled {
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		background: rgba(255, 255, 255, 0.6);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
+
+	&__inner {
+		width: $container-width;
+		height: 80px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__logo {
+		a {
+			display: block;
+
+			img {
+				height: 36px;
+			}
+		}
+	}
+
+	&__nav {
+		display: flex;
+		gap: 40px;
+	}
+
+	&__menu {
+		display: flex;
+		gap: 32px;
+		margin-top: $space-md;
+
+		a {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			line-height: 1;
+			font-size: 16px;
+			font-weight: $fw-medium;
+			color: $main;
+			position: relative; // 擬似要素の基準
+			padding-bottom: 4px; // 線がつくスペース
+
+			span {
+				font-size: 12px;
+				margin-top: $space-xs;
+				color: $black;
+				transition: color 0.3s ease; // 色変化を滑らかに
+			}
+
+			// 中央から伸びるアンダーライン
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: -2px; // 線の位置（英字の下あたり）
+				left: 50%; // 中央からスタート
+				width: 0; // 最初は長さゼロ
+				height: 1px; // ロゴの縦線と同じ繊細な細さ
+				background: $main; // ロゴと同じ色
+				transition: all 0.3s ease;
+				transform: translateX(-50%); // 常に中央を維持
+			}
+
+			// Hover時の挙動
+			&:hover {
+				&::after {
+					width: 100%; // 全幅まで伸びる
+				}
+				span {
+					color: $main; // サブテキストもメインカラーに寄せる
+				}
+			}
+		}
+	}
+
+	&__cta {
+		padding: 12px 32px;
+		box-sizing: border-box;
+		border: 1px solid $main;
+		border-radius: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 16px;
+		line-height: 1;
+		font-weight: $fw-medium;
+		color: $main;
+		background: transparent;
+		transition:
+			background-color 0.5s ease,
+			color 0.5s ease;
+		z-index: 0;
+
+		span {
+			font-size: 12px;
+			margin-top: $space-xs;
+			color: $black;
+		}
+
+		&:hover {
+			color: #fff;
+			background-color: $second;
+		}
+	}
+}
+
+@media (max-width: $sp) {
+	.header {
+		&__inner {
+			width: 100%;
+			height: 56px;
+			padding: 16px;
+		}
+
+		&__logo {
+			a {
+				img {
+					height: 24px;
+				}
+			}
+		}
+
+		&__nav {
+			display: none;
+		}
+	}
+}
+
+.hamburger {
+	display: none;
+}
+
+@include sp {
+	.hamburger {
+		display: flex;
+		width: 48px;
+		height: 48px;
+		position: fixed;
+		right: 8px;
+		top: 4px;
+		z-index: 1100;
+		background: none;
+		border: none;
+		cursor: pointer;
+		justify-content: center;
+		align-items: center;
+
+		span {
+			display: block;
+			position: absolute; /* すべて重ねる */
+			width: 28px;
+			height: 2px;
+			background: #b08a78;
+			transition:
+				transform 0.3s ease,
+				opacity 0.3s ease,
+				background 0.3s ease;
+			border-radius: 2px;
+
+			/* 初期位置（三本線に見せる） */
+			&:nth-child(1) {
+				transform: translateY(-8px);
+			}
+			&:nth-child(2) {
+				opacity: 1;
+			}
+			&:nth-child(3) {
+				transform: translateY(8px);
+			}
+		}
+
+		&.is-open {
+			span {
+				background: #fff;
+				transition:
+					transform 0.3s ease,
+					opacity 0.3s ease;
+
+				&:nth-child(1) {
+					transform: translateY(0) rotate(45deg);
+				}
+				&:nth-child(2) {
+					opacity: 0;
+				}
+				&:nth-child(3) {
+					transform: translateY(0) rotate(-45deg);
+				}
+			}
+		}
+	}
+
+	body.drawer-open {
+		overflow: hidden;
+	}
+
+	.drawer {
+		position: fixed;
+		inset: 0;
+		background: $main;
+
+		display: flex;
+		flex-direction: column;
+
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-100%);
+		transition: 0.4s;
+
+		z-index: $z-modal;
+
+		&::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			pointer-events: none; /* 背景クリックは無効 */
+		}
+
+		&.is-open {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&__header {
+			width: 100%;
+			display: flex;
+			align-items: center;
+
+			.header__logo {
+				padding: 16px;
+				height: 24px;
+			}
+
+			img {
+				height: 24px;
+				filter: brightness(0) invert(1); /* ロゴが黒い場合、背景に合わせて白抜きにする */
+			}
+		}
+
+		&__nav {
+			font-weight: $fw-bold;
+			letter-spacing: 0.2em;
+			flex: 1;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 120px;
+			align-items: center;
+			gap: 32px;
+		}
+
+		&__nav a {
+			font-size: 28px;
+			letter-spacing: 0.2em;
+			color: white;
+		}
+
+		/* ドロワー下部のSNSとコピーライト */
+		&__footer {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+			padding-bottom: 20px;
+		}
+
+		&__sns {
+			position: absolute;
+			right: 20px;
+			bottom: 40px;
+
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			.sns-icon img {
+				width: 43px;
+				height: 43px;
+			}
+		}
+
+		&__copy {
+			width: 100%;
+			padding-left: 16px;
+			color: $bg;
+			font-size: 10px;
+			text-align: left;
+		}
+	}
+}

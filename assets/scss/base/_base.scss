@@ -1,0 +1,244 @@
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+html {
+	scroll-behavior: smooth;
+	font-size: 100%;
+	scroll-padding-top: 100px;
+
+	@media (max-width: $sp) {
+		html {
+			scroll-padding-top: 70px;
+		}
+	}
+}
+
+body {
+	font-family: $font-en, $font-jp;
+	font-weight: $fw-regular;
+	color: $black;
+	line-height: 1.5;
+	background-color: $bg;
+}
+
+//main
+main {
+	width: 100%;
+	margin: 0;
+
+	.main__contents {
+		width: 100%;
+		padding-top: 82px;
+		background-image: url(../img/main_bg.svg);
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 100% auto;
+
+		.main__container {
+			width: 100%;
+			background-color: $bg-second;
+			padding-bottom: 160px;
+
+			.main__inner {
+				width: $container-width;
+				margin: 0 auto;
+				background-color: $bg-second;
+			}
+		}
+	}
+
+	@media (max-width: $sp) {
+		.main__contents {
+			width: 100%;
+			padding-top: 82px;
+			background-image: url(../img/main_bg_sp.svg);
+			background-repeat: no-repeat;
+			background-position: top center;
+			background-size: 100% auto;
+
+			.main__container {
+				width: 100%;
+				background-color: $bg-second;
+				padding-bottom: 0;
+
+				.main__inner {
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+					background-color: $bg-second;
+				}
+			}
+		}
+	}
+}
+
+//title
+.section-header {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 40px;
+	margin-top: 88px;
+
+	&__title {
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+		width: 536px;
+	}
+
+	&__num {
+		font-family: $font-num;
+		font-size: 120px;
+		line-height: 1;
+		color: $second;
+	}
+
+	&__main {
+		font-family: $font-en;
+		font-weight: $fw-medium;
+		font-size: 60px;
+		line-height: 1;
+		letter-spacing: 0.2em;
+	}
+
+	&__sub {
+		font-family: $font-jp;
+		font-size: 30px;
+		letter-spacing: 0.2em;
+		line-height: 1;
+		color: $second;
+		margin-top: $space-md;
+	}
+
+	&__lead {
+		line-height: 2;
+		font-size: 24px;
+		font-family: $font-jp;
+		letter-spacing: 0.05em;
+		display: flex;
+		align-items: center;
+		max-width: 664px;
+	}
+
+	@media (max-width: $sp) {
+		flex-direction: column;
+
+		&__title {
+			display: flex;
+			align-items: flex-start;
+			gap: 16px;
+			width: 100%;
+		}
+
+		&__num {
+			font-size: 74px;
+		}
+
+		&__main {
+			font-size: 36px;
+			letter-spacing: 0.2em;
+		}
+
+		&__sub {
+			font-size: 18px;
+			letter-spacing: 0.2em;
+			margin-top: 8px;
+		}
+
+		&__lead {
+			font-size: 12px;
+			letter-spacing: 0.05em;
+			max-width: none;
+			margin-left: 16px;
+		}
+	}
+}
+
+//br
+
+.pc_br {
+	display: inline-block;
+
+	@media (max-width: $sp) {
+		display: none;
+	}
+}
+
+.sp_br {
+	display: none;
+
+	@media (max-width: $sp) {
+		display: inline-block;
+	}
+}
+
+//squircleSetting
+.clothoid-corner {
+	clip-path: polygon(
+		41.670368% 0%,
+		calc(100% - 41.670368%) 0%,
+		calc(100% - 37.295239%) 0.020651%,
+		calc(100% - 32.922445%) 0.151634%,
+		calc(100% - 28.561998%) 0.493893%,
+		calc(100% - 24.237825%) 1.146894%,
+		calc(100% - 20.002519%) 2.233011%,
+		calc(100% - 15.937108%) 3.834411%,
+		calc(100% - 12.149079%) 6.005296%,
+		calc(100% - 8.779251%) 8.779251%,
+		calc(100% - 6.005296%) 12.149079%,
+		calc(100% - 3.834411%) 15.937108%,
+		calc(100% - 2.233011%) 20.002519%,
+		calc(100% - 1.146894%) 24.237825%,
+		calc(100% - 0.493893%) 28.561998%,
+		calc(100% - 0.151634%) 32.922445%,
+		calc(100% - 0.020651%) 37.295239%,
+		calc(100% - 0.020651%) calc(100% - 37.295239%),
+		calc(100% - 0.151634%) calc(100% - 32.922445%),
+		calc(100% - 0.493893%) calc(100% - 28.561998%),
+		calc(100% - 1.146894%) calc(100% - 24.237825%),
+		calc(100% - 2.233011%) calc(100% - 20.002519%),
+		calc(100% - 3.834411%) calc(100% - 15.937108%),
+		calc(100% - 6.005296%) calc(100% - 12.149079%),
+		calc(100% - 8.779251%) calc(100% - 8.779251%),
+		calc(100% - 12.149079%) calc(100% - 6.005296%),
+		calc(100% - 15.937108%) calc(100% - 3.834411%),
+		calc(100% - 20.002519%) calc(100% - 2.233011%),
+		calc(100% - 24.237825%) calc(100% - 1.146894%),
+		calc(100% - 28.561998%) calc(100% - 0.493893%),
+		calc(100% - 32.922445%) calc(100% - 0.151634%),
+		calc(100% - 37.295239%) calc(100% - 0.020651%),
+		calc(100% - 41.670368%) 100%,
+		41.670368% 100%,
+		37.295239% calc(100% - 0.020651%),
+		32.922445% calc(100% - 0.151634%),
+		28.561998% calc(100% - 0.493893%),
+		24.237825% calc(100% - 1.146894%),
+		20.002519% calc(100% - 2.233011%),
+		15.937108% calc(100% - 3.834411%),
+		12.149079% calc(100% - 6.005296%),
+		8.779251% calc(100% - 8.779251%),
+		6.005296% calc(100% - 12.149079%),
+		3.834411% calc(100% - 15.937108%),
+		2.233011% calc(100% - 20.002519%),
+		1.146894% calc(100% - 24.237825%),
+		0.493893% calc(100% - 28.561998%),
+		0.151634% calc(100% - 32.922445%),
+		0.020651% calc(100% - 37.295239%),
+		0.020651% 37.295239%,
+		0.151634% 32.922445%,
+		0.493893% 28.561998%,
+		1.146894% 24.237825%,
+		2.233011% 20.002519%,
+		3.834411% 15.937108%,
+		6.005296% 12.149079%,
+		8.779251% 8.779251%,
+		12.149079% 6.005296%,
+		15.937108% 3.834411%,
+		20.002519% 2.233011%,
+		24.237825% 1.146894%,
+		28.561998% 0.493893%,
+		32.922445% 0.151634%,
+		37.295239% 0.020651%,
+		41.670368% 0%
+	);
+}

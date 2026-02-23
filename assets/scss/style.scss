@@ -1,0 +1,16 @@
+@use './base/reset'; //初期化
+@use './base/variables'; //設定
+@use './base/breakpoints' as *; //ブレークポイント
+@use './base/base'; //サイト基盤
+
+@use './layout/header';
+@use './layout/footer';
+
+@use './component/fv';
+@use './component/service';
+@use './component/flow';
+@use './component/profile';
+@use './component/contact';
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');

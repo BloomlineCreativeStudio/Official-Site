@@ -1,0 +1,126 @@
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.flow {
+	padding: 120px 0;
+
+	@media (max-width: $sp) {
+		padding: 0 16px;
+	}
+
+	&__container {
+		position: relative;
+		padding-left: 104px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 136px;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background: $second;
+
+			@media (max-width: $sp) {
+				display: none;
+			}
+		}
+
+		@media (max-width: $sp) {
+			padding-left: 0;
+			border-radius: 60px;
+			margin: 0;
+			padding: 48px 32px 32px 32px;
+			background-color: $bg;
+
+			&::before {
+				left: 50px;
+			}
+		}
+	}
+
+	&__item {
+		display: grid;
+		grid-template-columns: 80px 1fr;
+		gap: 160px;
+		margin-bottom: 56px;
+
+		@media (max-width: $sp) {
+			grid-template-columns: 32px 1fr;
+			gap: 16px;
+			margin-bottom: 16px;
+		}
+	}
+
+	&__badge {
+		width: 74px;
+		height: 74px;
+		background: $second;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: $fw-bold;
+		font-family: $font-num;
+		font-size: 34px;
+
+		@media (max-width: $sp) {
+			width: 32px;
+			height: 32px;
+			font-size: 22px;
+		}
+	}
+
+	&__content {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 16px;
+
+		h3 {
+			width: 240px;
+			position: relative;
+			font-size: 32px;
+			font-family: $font-jp;
+			z-index: 100;
+
+			@media (max-width: $sp) {
+				font-size: 20px;
+				width: 100%;
+			}
+		}
+
+		p {
+			font-size: 20px;
+			font-family: $font-jp;
+
+			@media (max-width: $sp) {
+				font-size: 12px;
+			}
+		}
+
+		@media (max-width: $sp) {
+			flex-direction: column;
+		}
+	}
+
+	&__en {
+		position: absolute;
+		left: 120px;
+		bottom: -12px;
+		font-size: 26px;
+		font-family: $font-accent;
+		font-weight: $fw-regular;
+		color: $second;
+		display: inline-block;
+		transform: rotate(-10.65deg);
+		z-index: -1;
+
+		@media (max-width: $sp) {
+			font-size: 20px;
+			right: 0;
+			left: unset;
+			bottom: 0;
+		}
+	}
+}

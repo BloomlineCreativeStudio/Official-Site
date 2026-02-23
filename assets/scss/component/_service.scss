@@ -1,0 +1,101 @@
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.service {
+	@media (max-width: $sp) {
+		padding: 0 16px;
+	}
+	.service-container {
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 72px;
+			@media (max-width: $sp) {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 48px;
+				background-color: $bg;
+				border-radius: 60px;
+				margin: 0;
+				padding: 48px 32px;
+
+				.clothoid-corner {
+					clip-path: none;
+				}
+			}
+		}
+
+		&__squircle {
+			width: 352px;
+			height: 352px;
+			background-color: $bg;
+			text-align: center;
+			@media (max-width: $sp) {
+				width: 100%;
+				height: auto;
+				background-color: transparent;
+				text-align: center;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 16px;
+			}
+		}
+
+		&__title {
+			font-family: $font-jp;
+			font-size: 30px;
+			font-weight: $fw-medium;
+			color: $main;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 72px;
+
+			span {
+				font-weight: $fw-light;
+				font-size: 16px;
+				color: $black;
+			}
+
+			@media (max-width: $sp) {
+				align-items: flex-start;
+				margin: 0;
+				font-size: 20px;
+				width: 70%;
+
+				span {
+					font-size: 12px;
+				}
+			}
+		}
+
+		&__icon {
+			width: 136px;
+			height: 136px;
+			margin: 16px auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				max-width: 100%;
+				max-height: auto;
+				object-fit: contain;
+			}
+
+			@media (max-width: $sp) {
+				margin: 0;
+				width: 30%;
+				height: auto;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bloomline creative Studio</title>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="header__inner container">
+				<!-- ロゴ -->
+				<h1 class="header__logo">
+					<a href="/">
+						<img
+							src="/assets/img/logo.svg"
+							alt="Bloomline creative Studio"
+						/>
+					</a>
+				</h1>
+				<!-- PCナビ -->
+				<nav class="header__nav">
+					<ul class="header__menu">
+						<li>
+							<a href="#service">サービス<span>Service</span></a>
+						</li>
+						<li>
+							<a href="#flow">ワークフロー<span>Flow</span></a>
+						</li>
+						<li>
+							<a href="#profile"
+								>プロフィール<span>Profile</span></a
+							>
+						</li>
+					</ul>
+
+					<a href="#contact" class="header__cta">
+						お問い合わせ
+						<span>Contact</span>
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- ハンバーガー -->
+		<button class="hamburger" aria-label="menu" aria-controls="drawer">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+		<!-- SPフルスクリーンメニュー -->
+		<div class="drawer" id="drawer">
+			<div class="drawer__header">
+				<div class="header__logo">
+					<img
+						src="/assets/img/logo.svg"
+						alt="Bloomline creative Studio"
+					/>
+				</div>
+			</div>
+
+			<nav class="drawer__nav">
+				<a href="#service">Service</a>
+				<a href="#flow">Flow</a>
+				<a href="#profile">Profile</a>
+				<a href="#contact">Contact</a>
+			</nav>
+
+			<div class="drawer__footer">
+				<div class="drawer__sns">
+					<a href="#" class="sns-icon x-icon"
+						><img src="assets/img/sns-x.svg" alt="X"
+					/></a>
+					<a href="#" class="sns-icon insta-icon"
+						><img src="assets/img/sns-ig.svg" alt="Instagram"
+					/></a>
+				</div>
+				<p class="drawer__copy">
+					&copy; 2026 Bloomline creative Studio
+				</p>
+			</div>
+		</div>
+
+		<main>
+			<!-- fv -->
+			<div data-include="components/fv.html"></div>
+
+			<div class="main__contents">
+				<div class="main__container">
+					<div class="main__inner">
+						<!-- service -->
+						<div data-include="components/service.html"></div>
+						<!-- flow -->
+						<div data-include="components/flow.html"></div>
+						<!-- profile -->
+						<div data-include="components/profile.html"></div>
+						<!-- contact -->
+						<div data-include="components/contact.html"></div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer id="footer" class="footer">
+			<div class="footer__inner">
+				<p class="footer__logo">
+					<img
+						src="assets/img/logo_footer.svg"
+						alt="Bloomline creative Studio"
+					/>
+				</p>
+
+				<p class="footer__copy">
+					&copy; 2026 Bloomline creative Studio
+				</p>
+			</div>
+		</footer>
+
+		<script src="assets/js/include.js"></script>
+		<script src="assets/js/main.js" defer></script>
+	</body>
+</html>
