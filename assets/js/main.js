@@ -31,31 +31,6 @@ window.addEventListener('load', () => {
 });
 
 // SPハンバーガーメニュー
-
-// const hamburger = document.querySelector('.hamburger');
-// const drawer = document.querySelector('.drawer');
-// const closeBtn = document.querySelector('.drawer__close');
-
-// if (hamburger && drawer) {
-// 	hamburger.addEventListener('click', () => {
-// 		hamburger.classList.toggle('is-open');
-// 		drawer.classList.toggle('is-open');
-// 		document.body.classList.toggle('drawer-open');
-// 	});
-
-// 	document.querySelectorAll('.drawer a').forEach((link) => {
-// 		link.addEventListener('click', () => {
-// 			hamburger.classList.remove('is-open');
-// 			drawer.classList.remove('is-open');
-// 		});
-// 	});
-
-// 	closeBtn?.addEventListener('click', () => {
-// 		hamburger.classList.remove('is-open');
-// 		drawer.classList.remove('is-open');
-// 	});
-// }
-
 const hamburger = document.querySelector('.hamburger');
 const drawer = document.querySelector('.drawer');
 
