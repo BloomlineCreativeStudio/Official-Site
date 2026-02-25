@@ -1,3 +1,12 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _profile.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   プロフィール・スキル・SNSエリア
+   ========================================================== */
+
 @use '../base/variables' as *;
 @use '../base/breakpoints' as *;
 
@@ -6,7 +15,6 @@
 
 	@include sp {
 		padding: 0 16px;
-		grid-template-columns: 1fr;
 	}
 
 	&__container {
@@ -25,17 +33,17 @@
 	}
 
 	&__portrait {
+		img {
+			width: 300px;
+
+			@include sp {
+				width: 160px;
+			}
+		}
+
 		@include sp {
 			max-width: 160px;
 			margin: 0 auto;
-		}
-	}
-
-	&__portrait img {
-		width: 300px;
-
-		@include sp {
-			width: 160px;
 		}
 	}
 
@@ -44,14 +52,16 @@
 		position: relative;
 		margin-top: 24px;
 		z-index: 100;
+
 		display: flex;
 		gap: 16px;
 		justify-content: flex-end;
 		align-items: flex-end;
+
 		@include sp {
 			width: 100%;
-			align-items: flex-start;
 			padding: 0 24px;
+			align-items: flex-start;
 		}
 	}
 
@@ -99,23 +109,25 @@
 		}
 	}
 
-	&__header h2 {
-		font-weight: $fw-semibold;
-		font-size: 30px;
-		letter-spacing: 0.08em;
-
-		span {
-			font-weight: $fw-regular;
-			font-size: 18px;
+	&__header {
+		h2 {
+			font-weight: $fw-semibold;
+			font-size: 30px;
 			letter-spacing: 0.08em;
-			color: $main;
-		}
 
-		@include sp {
-			font-size: 24px;
+			@include sp {
+				font-size: 24px;
+			}
 
 			span {
-				font-size: 14px;
+				font-weight: $fw-regular;
+				font-size: 18px;
+				letter-spacing: 0.08em;
+				color: $main;
+
+				@include sp {
+					font-size: 14px;
+				}
 			}
 		}
 	}
@@ -138,7 +150,6 @@
 
 		@include sp {
 			font-size: 12px;
-			letter-spacing: 0.1em;
 		}
 	}
 
@@ -202,10 +213,10 @@
 
 			li {
 				background: $bg;
-				box-sizing: border-box;
 				padding: 2px 20px;
 				border-radius: 20px;
 				border: 1px solid $second;
+
 				font-size: 16px;
 				font-weight: $fw-semibold;
 				letter-spacing: 0.05em;

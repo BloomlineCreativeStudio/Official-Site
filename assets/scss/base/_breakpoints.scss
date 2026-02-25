@@ -1,14 +1,23 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _breakpoints.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   レスポンシブ用ブレークポイント定義
+   ========================================================== */
+
 $sp: 768px;
 $tab: 1024px;
 
 @mixin sp {
-    @media (max-width: $sp) {
-        @content;
-    }
+	@media (max-width: $sp) {
+		@content;
+	}
 }
 
 @mixin tab {
-    @media (max-width: $tab) {
-        @content;
-    }
+	@media (max-width: $tab) {
+		@content;
+	}
 }

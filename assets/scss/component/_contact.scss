@@ -1,3 +1,12 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _contact.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   お問い合わせセクション・CTAボタン
+   ========================================================== */
+
 @use '../base/variables' as *;
 @use '../base/breakpoints' as *;
 
@@ -10,17 +19,12 @@
 		background-repeat: no-repeat;
 		background-position: top center;
 		background-size: 100% auto;
-	}
 
-	@include sp {
 		.section-header {
 			padding: 0 16px;
 			margin-top: 20px;
 
-			&__num {
-				color: $bg;
-			}
-
+			&__num,
 			&__sub {
 				color: $bg;
 			}
@@ -34,7 +38,9 @@
 		justify-content: space-between;
 
 		@include sp {
+			width: 100%;
 			padding: 0 16px;
+			flex-direction: column;
 		}
 	}
 
@@ -45,6 +51,7 @@
 
 		ul {
 			margin-top: 20px;
+
 			li {
 				line-height: 1.8em;
 			}
@@ -67,7 +74,6 @@
 			width: 438px;
 			height: 160px;
 
-			box-sizing: border-box;
 			border: 1px solid $main;
 			border-radius: 80px;
 			background: $bg;
@@ -77,13 +83,19 @@
 			text-decoration: none;
 
 			overflow: hidden;
-
 			transition:
 				background-color 0.5s ease,
 				color 0.5s ease;
 
 			&:hover {
 				background-color: #e4d9d4;
+			}
+
+			@include sp {
+				width: 328px;
+				height: 120px;
+				border-radius: 60px;
+				font-size: 24px;
 			}
 		}
 
@@ -100,8 +112,11 @@
 			font-family: $font-accent;
 			font-size: 32px;
 			color: $second;
-
 			transform: rotate(-10deg);
+
+			@include sp {
+				font-size: 24px;
+			}
 		}
 
 		.cta-note {
@@ -117,7 +132,7 @@
 
 		.cta-sns {
 			position: relative;
-			margin: 40px auto 0 auto;
+			margin: 40px auto 0;
 			width: 316px;
 		}
 
@@ -129,7 +144,6 @@
 			font-family: $font-accent;
 			font-size: 24px;
 			color: rgba($second, 0.5);
-
 			transform: rotate(-10deg);
 
 			@include sp {
@@ -141,6 +155,7 @@
 			display: flex;
 			justify-content: flex-end;
 			gap: 16px;
+
 			@include sp {
 				justify-content: center;
 			}
@@ -160,35 +175,6 @@
 
 			&:hover img {
 				transform: scale(1.08);
-			}
-		}
-	}
-}
-
-@media (max-width: $sp) {
-	.contact {
-		&__container {
-			width: 100%;
-			margin: 0 auto;
-			display: flex;
-			justify-content: space-between;
-			flex-direction: column;
-		}
-
-		&__cta {
-			text-align: center;
-
-			.cta-button {
-				width: 328px;
-				height: 120px;
-				border-radius: 60px;
-				font-size: 24px;
-			}
-
-			.cta-bg {
-				right: 40px;
-				bottom: 24px;
-				font-size: 24px;
 			}
 		}
 	}

@@ -1,8 +1,13 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap");
-/* =========================
-   Reset / Base normalize
-========================= */
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _reset.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   ブラウザデフォルトスタイルのリセット定義
+   ========================================================== */
 *,
 *::before,
 *::after {
@@ -23,28 +28,41 @@ body {
 }
 
 /* headings */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p,
-ul, ol,
+ul,
+ol,
 figure,
 blockquote {
   margin: 0;
 }
 
 /* lists */
-ul, ol {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
 
 /* media */
-img, picture, video, canvas {
+img,
+picture,
+video,
+canvas {
   display: block;
   max-width: 100%;
 }
 
 /* forms */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -60,13 +78,37 @@ table {
   border-spacing: 0;
 }
 
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _variables.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   カラー・フォント・サイズ等の変数管理
+   ========================================================== */
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _breakpoints.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   レスポンシブ用ブレークポイント定義
+   ========================================================== */
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _base.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   ベースタイポグラフィ・共通スタイル定義
+   ========================================================== */
 html {
   scroll-behavior: smooth;
   font-size: 100%;
   scroll-padding-top: 100px;
 }
 @media (max-width: 768px) {
-  html html {
+  html {
     scroll-padding-top: 70px;
   }
 }
@@ -79,50 +121,46 @@ body {
   background-color: #fafaf8;
 }
 
+/* Main layout */
 main {
   width: 100%;
   margin: 0;
 }
 main .main__contents {
-  width: 100%;
   padding-top: 82px;
   background-image: url(../img/main_bg.svg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
 }
-main .main__contents .main__container {
+@media (max-width: 768px) {
+  main .main__contents {
+    background-image: url(../img/main_bg_sp.svg);
+  }
+}
+main .main__container {
   width: 100%;
   background-color: #f4f0ed;
   padding-bottom: 160px;
 }
-main .main__contents .main__container .main__inner {
+@media (max-width: 768px) {
+  main .main__container {
+    padding-bottom: 0;
+  }
+}
+main .main__inner {
   width: 1200px;
   margin: 0 auto;
   background-color: #f4f0ed;
 }
 @media (max-width: 768px) {
-  main .main__contents {
+  main .main__inner {
     width: 100%;
-    padding-top: 82px;
-    background-image: url(../img/main_bg_sp.svg);
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100% auto;
-  }
-  main .main__contents .main__container {
-    width: 100%;
-    background-color: #f4f0ed;
-    padding-bottom: 0;
-  }
-  main .main__contents .main__container .main__inner {
-    width: 100%;
-    margin: 0 auto;
     padding: 0;
-    background-color: #f4f0ed;
   }
 }
 
+/* Section title */
 .section-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -130,8 +168,7 @@ main .main__contents .main__container .main__inner {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-bottom: 40px;
-  margin-top: 88px;
+  margin: 88px 0 40px;
 }
 .section-header__title {
   display: -webkit-box;
@@ -143,11 +180,21 @@ main .main__contents .main__container .main__inner {
   gap: 16px;
   width: 536px;
 }
+@media (max-width: 768px) {
+  .section-header__title {
+    width: 100%;
+  }
+}
 .section-header__num {
   font-family: "Libre Baskerville", serif;
   font-size: 120px;
   line-height: 1;
   color: #d2bdb3;
+}
+@media (max-width: 768px) {
+  .section-header__num {
+    font-size: 74px;
+  }
 }
 .section-header__main {
   font-family: "Manrope", sans-serif;
@@ -156,6 +203,11 @@ main .main__contents .main__container .main__inner {
   line-height: 1;
   letter-spacing: 0.2em;
 }
+@media (max-width: 768px) {
+  .section-header__main {
+    font-size: 36px;
+  }
+}
 .section-header__sub {
   font-family: "Zen Kaku Gothic New", sans-serif;
   font-size: 30px;
@@ -163,6 +215,12 @@ main .main__contents .main__container .main__inner {
   line-height: 1;
   color: #d2bdb3;
   margin-top: 16px;
+}
+@media (max-width: 768px) {
+  .section-header__sub {
+    font-size: 18px;
+    margin-top: 8px;
+  }
 }
 .section-header__lead {
   line-height: 2;
@@ -178,42 +236,22 @@ main .main__contents .main__container .main__inner {
   max-width: 664px;
 }
 @media (max-width: 768px) {
+  .section-header__lead {
+    font-size: 12px;
+    max-width: none;
+    margin-left: 16px;
+  }
+}
+@media (max-width: 768px) {
   .section-header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .section-header__title {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    gap: 16px;
-    width: 100%;
-  }
-  .section-header__num {
-    font-size: 74px;
-  }
-  .section-header__main {
-    font-size: 36px;
-    letter-spacing: 0.2em;
-  }
-  .section-header__sub {
-    font-size: 18px;
-    letter-spacing: 0.2em;
-    margin-top: 8px;
-  }
-  .section-header__lead {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    max-width: none;
-    margin-left: 16px;
-  }
 }
 
+/* Line-break helpers */
 .pc_br {
   display: inline-block;
 }
@@ -232,10 +270,22 @@ main .main__contents .main__container .main__inner {
   }
 }
 
+/* Squircle setting */
 .clothoid-corner {
   clip-path: polygon(41.670368% 0%, 58.329632% 0%, 62.704761% 0.020651%, 67.077555% 0.151634%, 71.438002% 0.493893%, 75.762175% 1.146894%, 79.997481% 2.233011%, 84.062892% 3.834411%, 87.850921% 6.005296%, 91.220749% 8.779251%, 93.994704% 12.149079%, 96.165589% 15.937108%, 97.766989% 20.002519%, 98.853106% 24.237825%, 99.506107% 28.561998%, 99.848366% 32.922445%, 99.979349% 37.295239%, 99.979349% 62.704761%, 99.848366% 67.077555%, 99.506107% 71.438002%, 98.853106% 75.762175%, 97.766989% 79.997481%, 96.165589% 84.062892%, 93.994704% 87.850921%, 91.220749% 91.220749%, 87.850921% 93.994704%, 84.062892% 96.165589%, 79.997481% 97.766989%, 75.762175% 98.853106%, 71.438002% 99.506107%, 67.077555% 99.848366%, 62.704761% 99.979349%, 58.329632% 100%, 41.670368% 100%, 37.295239% 99.979349%, 32.922445% 99.848366%, 28.561998% 99.506107%, 24.237825% 98.853106%, 20.002519% 97.766989%, 15.937108% 96.165589%, 12.149079% 93.994704%, 8.779251% 91.220749%, 6.005296% 87.850921%, 3.834411% 84.062892%, 2.233011% 79.997481%, 1.146894% 75.762175%, 0.493893% 71.438002%, 0.151634% 67.077555%, 0.020651% 62.704761%, 0.020651% 37.295239%, 0.151634% 32.922445%, 0.493893% 28.561998%, 1.146894% 24.237825%, 2.233011% 20.002519%, 3.834411% 15.937108%, 6.005296% 12.149079%, 8.779251% 8.779251%, 12.149079% 6.005296%, 15.937108% 3.834411%, 20.002519% 2.233011%, 24.237825% 1.146894%, 28.561998% 0.493893%, 32.922445% 0.151634%, 37.295239% 0.020651%, 41.670368% 0%);
 }
 
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _header.scss
+   Role    : Layout
+   ----------------------------------------------------------
+   Description :
+   固定ヘッダー・ナビゲーション・ドロワーメニュー
+   States :
+   .is-scrolled
+   .is-open
+   ========================================================== */
 .header {
   width: 100%;
   background: #fafaf8;
@@ -244,7 +294,6 @@ main .main__contents .main__container .main__inner {
   top: 0;
   left: 0;
   right: 0;
-  background: #fafaf8;
   -webkit-transition: background 0.4s ease, -webkit-box-shadow 0.4s ease;
   transition: background 0.4s ease, -webkit-box-shadow 0.4s ease;
   transition: background 0.4s ease, box-shadow 0.4s ease;
@@ -271,17 +320,34 @@ main .main__contents .main__container .main__inner {
       -ms-flex-align: center;
           align-items: center;
 }
+@media (max-width: 768px) {
+  .header__inner {
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+  }
+}
 .header__logo a {
   display: block;
 }
 .header__logo a img {
   height: 36px;
 }
+@media (max-width: 768px) {
+  .header__logo a img {
+    height: 24px;
+  }
+}
 .header__nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 40px;
+}
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
 }
 .header__menu {
   display: -webkit-box;
@@ -323,8 +389,8 @@ main .main__contents .main__container .main__inner {
   width: 0;
   height: 1px;
   background: #b08a78;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
@@ -336,8 +402,6 @@ main .main__contents .main__container .main__inner {
 }
 .header__cta {
   padding: 12px 32px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border: 1px solid #b08a78;
   border-radius: 50px;
   display: -webkit-box;
@@ -357,7 +421,6 @@ main .main__contents .main__container .main__inner {
   background: transparent;
   -webkit-transition: background-color 0.5s ease, color 0.5s ease;
   transition: background-color 0.5s ease, color 0.5s ease;
-  z-index: 0;
 }
 .header__cta span {
   font-size: 12px;
@@ -369,23 +432,10 @@ main .main__contents .main__container .main__inner {
   background-color: #d2bdb3;
 }
 
-@media (max-width: 768px) {
-  .header__inner {
-    width: 100%;
-    height: 56px;
-    padding: 16px;
-  }
-  .header__logo a img {
-    height: 24px;
-  }
-  .header__nav {
-    display: none;
-  }
-}
+/* Hamburger (SP only) */
 .hamburger {
   display: none;
 }
-
 @media (max-width: 768px) {
   .hamburger {
     display: -webkit-box;
@@ -407,51 +457,51 @@ main .main__contents .main__container .main__inner {
         -ms-flex-align: center;
             align-items: center;
   }
-  .hamburger span {
-    display: block;
-    position: absolute; /* すべて重ねる */
-    width: 28px;
-    height: 2px;
-    background: #b08a78;
-    -webkit-transition: opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
-    transition: opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
-    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
-    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
-    border-radius: 2px;
-    /* 初期位置（三本線に見せる） */
-  }
-  .hamburger span:nth-child(1) {
-    -webkit-transform: translateY(-8px);
-            transform: translateY(-8px);
-  }
-  .hamburger span:nth-child(2) {
-    opacity: 1;
-  }
-  .hamburger span:nth-child(3) {
-    -webkit-transform: translateY(8px);
-            transform: translateY(8px);
-  }
-  .hamburger.is-open span {
-    background: #fff;
-    -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-    transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
-  }
-  .hamburger.is-open span:nth-child(1) {
-    -webkit-transform: translateY(0) rotate(45deg);
-            transform: translateY(0) rotate(45deg);
-  }
-  .hamburger.is-open span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.is-open span:nth-child(3) {
-    -webkit-transform: translateY(0) rotate(-45deg);
-            transform: translateY(0) rotate(-45deg);
-  }
-  body.drawer-open {
-    overflow: hidden;
-  }
+}
+.hamburger span {
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #b08a78;
+  border-radius: 2px;
+  -webkit-transition: opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
+}
+.hamburger span:nth-child(1) {
+  -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+}
+.hamburger span:nth-child(3) {
+  -webkit-transform: translateY(8px);
+          transform: translateY(8px);
+}
+.hamburger.is-open span {
+  background: #fff;
+}
+.hamburger.is-open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* Drawer (SP only) */
+.drawer {
+  display: none;
+}
+@media (max-width: 768px) {
   .drawer {
     position: fixed;
     inset: 0;
@@ -465,45 +515,33 @@ main .main__contents .main__container .main__inner {
             flex-direction: column;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     -webkit-transform: translateY(-100%);
             transform: translateY(-100%);
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    -webkit-transition: opacity 0.4s, visibility 0.4s, -webkit-transform 0.4s;
+    transition: opacity 0.4s, visibility 0.4s, -webkit-transform 0.4s;
+    transition: transform 0.4s, opacity 0.4s, visibility 0.4s;
+    transition: transform 0.4s, opacity 0.4s, visibility 0.4s, -webkit-transform 0.4s;
     z-index: 1000;
-  }
-  .drawer::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none; /* 背景クリックは無効 */
   }
   .drawer.is-open {
     -webkit-transform: translateY(0);
             transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
   .drawer__header {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .drawer__header .header__logo {
+    height: 56px;
     padding: 16px;
-    height: 24px;
   }
-  .drawer__header img {
+  .drawer__header .header__logo img {
     height: 24px;
     -webkit-filter: brightness(0) invert(1);
-            filter: brightness(0) invert(1); /* ロゴが黒い場合、背景に合わせて白抜きにする */
+            filter: brightness(0) invert(1);
   }
   .drawer__nav {
-    font-weight: 700;
-    letter-spacing: 0.2em;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
@@ -517,34 +555,17 @@ main .main__contents .main__container .main__inner {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    padding-top: 120px;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     gap: 32px;
+    padding-top: 120px;
   }
   .drawer__nav a {
     font-size: 28px;
     letter-spacing: 0.2em;
-    color: white;
-  }
-  .drawer {
-    /* ドロワー下部のSNSとコピーライト */
-  }
-  .drawer__footer {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    gap: 20px;
-    padding-bottom: 20px;
+    color: #fff;
+    font-weight: 700;
   }
   .drawer__sns {
     position: absolute;
@@ -570,7 +591,51 @@ main .main__contents .main__container .main__inner {
     font-size: 10px;
     text-align: left;
   }
+  .drawer {
+    /* Close button (optional). If you keep it, use 2 spans in HTML. */
+  }
+  .drawer__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .drawer__close span {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+  }
+  .drawer__close span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .drawer__close span:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
 }
+
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _footer.scss
+   Role    : Layout
+   ----------------------------------------------------------
+   Description :
+   フッターエリアのレイアウト・コピーライト
+   ========================================================== */
 .footer {
   width: 100%;
   text-align: center;
@@ -581,44 +646,45 @@ main .main__contents .main__container .main__inner {
   margin: 0 auto;
   padding: 64px 0;
 }
+@media (max-width: 768px) {
+  .footer__inner {
+    width: 100%;
+    padding: 32px 0;
+  }
+}
 .footer__logo {
   width: 320px;
-  margin: 0 auto 8px auto;
+  margin: 0 auto 8px;
+}
+@media (max-width: 768px) {
+  .footer__logo {
+    width: 200px;
+    margin: 0 auto 24px;
+  }
 }
 .footer__logo img {
   display: block;
+  /* translateZ is optional; keep only if you saw rendering issues */
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
 .footer__copy {
   color: #fafaf8;
 }
-
 @media (max-width: 768px) {
-  .footer {
-    width: 100%;
-    text-align: center;
-    background: #d2bdb3;
-  }
-  .footer__inner {
-    width: 100%;
-    margin: 0 auto;
-    padding: 32px 0;
-  }
-  .footer__logo {
-    width: 200px;
-    margin: 0 auto 24px auto;
-  }
-  .footer__logo img {
-    display: block;
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-  }
   .footer__copy {
-    color: #fafaf8;
     font-size: 10px;
   }
 }
+
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _fv.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   First View（メインビジュアル）セクション
+   ========================================================== */
 .fv {
   width: 1200px;
   height: 854px;
@@ -626,8 +692,9 @@ main .main__contents .main__container .main__inner {
 }
 @media (max-width: 768px) {
   .fv {
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
+    height: auto;
   }
 }
 .fv__maincopy {
@@ -660,7 +727,8 @@ main .main__contents .main__container .main__inner {
   font-weight: 300;
 }
 @media (max-width: 768px) {
-  .fv__maincopy .business {
+  .fv__maincopy {
+    padding: 0 16px;
     font-size: 14px;
   }
 }
@@ -759,6 +827,14 @@ main .main__contents .main__container .main__inner {
             transform-origin: 0 100%;
   }
 }
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _service.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   サービス一覧セクション（カードUI）
+   ========================================================== */
 @media (max-width: 768px) {
   .service {
     padding: 0 16px;
@@ -771,7 +847,6 @@ main .main__contents .main__container .main__inner {
 }
 @media (max-width: 768px) {
   .service .service-container__list {
-    list-style: none;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -780,10 +855,12 @@ main .main__contents .main__container .main__inner {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 48px;
-    background-color: #fafaf8;
-    border-radius: 60px;
+    /* ul reset is handled in reset, but keep if needed */
+    list-style: none;
     margin: 0;
     padding: 48px 32px;
+    background-color: #fafaf8;
+    border-radius: 60px;
   }
   .service .service-container__list .clothoid-corner {
     clip-path: none;
@@ -800,7 +877,6 @@ main .main__contents .main__container .main__inner {
     width: 100%;
     height: auto;
     background-color: transparent;
-    text-align: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -837,12 +913,12 @@ main .main__contents .main__container .main__inner {
 }
 @media (max-width: 768px) {
   .service .service-container__title {
+    margin-top: 0;
+    width: 70%;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    margin: 0;
     font-size: 20px;
-    width: 70%;
   }
   .service .service-container__title span {
     font-size: 12px;
@@ -863,23 +939,27 @@ main .main__contents .main__container .main__inner {
           justify-content: center;
 }
 .service .service-container__icon img {
-  max-width: 100%;
-  max-height: auto;
+  width: 100%;
+  height: auto;
   -o-object-fit: contain;
      object-fit: contain;
 }
 @media (max-width: 768px) {
   .service .service-container__icon {
-    margin: 0;
     width: 30%;
     height: auto;
-  }
-  .service .service-container__icon img {
-    width: 100%;
-    height: auto;
+    margin: 0;
   }
 }
 
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _flow.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   ワークフロー（制作の流れ）セクション
+   ========================================================== */
 .flow {
   padding: 120px 0;
 }
@@ -909,13 +989,10 @@ main .main__contents .main__container .main__inner {
 @media (max-width: 768px) {
   .flow__container {
     padding-left: 0;
-    border-radius: 60px;
     margin: 0;
-    padding: 48px 32px 32px 32px;
+    padding: 48px 32px 32px;
     background-color: #fafaf8;
-  }
-  .flow__container::before {
-    left: 50px;
+    border-radius: 60px;
   }
 }
 .flow__item {
@@ -935,7 +1012,7 @@ main .main__contents .main__container .main__inner {
   width: 74px;
   height: 74px;
   background: #d2bdb3;
-  color: white;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -968,6 +1045,17 @@ main .main__contents .main__container .main__inner {
           align-items: center;
   gap: 16px;
 }
+@media (max-width: 768px) {
+  .flow__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
 .flow__content h3 {
   width: 240px;
   position: relative;
@@ -977,8 +1065,8 @@ main .main__contents .main__container .main__inner {
 }
 @media (max-width: 768px) {
   .flow__content h3 {
-    font-size: 20px;
     width: 100%;
+    font-size: 20px;
   }
 }
 .flow__content p {
@@ -988,14 +1076,6 @@ main .main__contents .main__container .main__inner {
 @media (max-width: 768px) {
   .flow__content p {
     font-size: 12px;
-  }
-}
-@media (max-width: 768px) {
-  .flow__content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
 }
 .flow__en {
@@ -1014,19 +1094,26 @@ main .main__contents .main__container .main__inner {
 @media (max-width: 768px) {
   .flow__en {
     font-size: 20px;
+    left: auto;
     right: 0;
-    left: unset;
     bottom: 0;
   }
 }
 
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _profile.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   プロフィール・スキル・SNSエリア
+   ========================================================== */
 .profile {
   padding: 120px 16px;
 }
 @media (max-width: 768px) {
   .profile {
     padding: 0 16px;
-    grid-template-columns: 1fr;
   }
 }
 .profile__container {
@@ -1043,18 +1130,18 @@ main .main__contents .main__container .main__inner {
 .profile__visual {
   text-align: center;
 }
-@media (max-width: 768px) {
-  .profile__portrait {
-    max-width: 160px;
-    margin: 0 auto;
-  }
-}
 .profile__portrait img {
   width: 300px;
 }
 @media (max-width: 768px) {
   .profile__portrait img {
     width: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .profile__portrait {
+    max-width: 160px;
+    margin: 0 auto;
   }
 }
 .profile__sns {
@@ -1076,10 +1163,10 @@ main .main__contents .main__container .main__inner {
 @media (max-width: 768px) {
   .profile__sns {
     width: 100%;
+    padding: 0 24px;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    padding: 0 24px;
   }
 }
 .profile__follow {
@@ -1139,6 +1226,11 @@ main .main__contents .main__container .main__inner {
   font-size: 30px;
   letter-spacing: 0.08em;
 }
+@media (max-width: 768px) {
+  .profile__header h2 {
+    font-size: 24px;
+  }
+}
 .profile__header h2 span {
   font-weight: 400;
   font-size: 18px;
@@ -1146,9 +1238,6 @@ main .main__contents .main__container .main__inner {
   color: #b08a78;
 }
 @media (max-width: 768px) {
-  .profile__header h2 {
-    font-size: 24px;
-  }
   .profile__header h2 span {
     font-size: 14px;
   }
@@ -1172,7 +1261,6 @@ main .main__contents .main__container .main__inner {
 @media (max-width: 768px) {
   .profile__text {
     font-size: 12px;
-    letter-spacing: 0.1em;
   }
 }
 .profile .skills {
@@ -1239,8 +1327,6 @@ main .main__contents .main__container .main__inner {
 }
 .profile .skills .tag-list li {
   background: #fafaf8;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   padding: 2px 20px;
   border-radius: 20px;
   border: 1px solid #d2bdb3;
@@ -1257,6 +1343,14 @@ main .main__contents .main__container .main__inner {
   }
 }
 
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _contact.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   お問い合わせセクション・CTAボタン
+   ========================================================== */
 .contact {
   padding: 120px 0;
 }
@@ -1268,16 +1362,11 @@ main .main__contents .main__container .main__inner {
     background-position: top center;
     background-size: 100% auto;
   }
-}
-@media (max-width: 768px) {
   .contact .section-header {
     padding: 0 16px;
     margin-top: 20px;
   }
-  .contact .section-header__num {
-    color: #fafaf8;
-  }
-  .contact .section-header__sub {
+  .contact .section-header__num, .contact .section-header__sub {
     color: #fafaf8;
   }
 }
@@ -1293,7 +1382,12 @@ main .main__contents .main__container .main__inner {
 }
 @media (max-width: 768px) {
   .contact__container {
+    width: 100%;
     padding: 0 16px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 .contact__text {
@@ -1328,8 +1422,6 @@ main .main__contents .main__container .main__inner {
           align-items: center;
   width: 438px;
   height: 160px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border: 1px solid #b08a78;
   border-radius: 80px;
   background: #fafaf8;
@@ -1342,6 +1434,14 @@ main .main__contents .main__container .main__inner {
 }
 .contact__cta .cta-button:hover {
   background-color: #e4d9d4;
+}
+@media (max-width: 768px) {
+  .contact__cta .cta-button {
+    width: 328px;
+    height: 120px;
+    border-radius: 60px;
+    font-size: 24px;
+  }
 }
 .contact__cta .cta-text {
   position: relative;
@@ -1357,6 +1457,11 @@ main .main__contents .main__container .main__inner {
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
 }
+@media (max-width: 768px) {
+  .contact__cta .cta-bg {
+    font-size: 24px;
+  }
+}
 .contact__cta .cta-note {
   margin-top: 56px;
   font-family: "Zen Kaku Gothic New", sans-serif;
@@ -1370,7 +1475,7 @@ main .main__contents .main__container .main__inner {
 }
 .contact__cta .cta-sns {
   position: relative;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 0;
   width: 316px;
 }
 .contact__cta .cta-follow {
@@ -1426,35 +1531,4 @@ main .main__contents .main__container .main__inner {
 .contact__cta .sns-btn:hover img {
   -webkit-transform: scale(1.08);
           transform: scale(1.08);
-}
-
-@media (max-width: 768px) {
-  .contact__container {
-    width: 100%;
-    margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .contact__cta {
-    text-align: center;
-  }
-  .contact__cta .cta-button {
-    width: 328px;
-    height: 120px;
-    border-radius: 60px;
-    font-size: 24px;
-  }
-  .contact__cta .cta-bg {
-    right: 40px;
-    bottom: 24px;
-    font-size: 24px;
-  }
 }

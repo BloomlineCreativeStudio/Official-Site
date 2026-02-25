@@ -1,3 +1,15 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _header.scss
+   Role    : Layout
+   ----------------------------------------------------------
+   Description :
+   固定ヘッダー・ナビゲーション・ドロワーメニュー
+   States :
+   .is-scrolled
+   .is-open
+   ========================================================== */
+
 @use '../base/variables' as *;
 @use '../base/breakpoints' as *;
 
@@ -10,7 +22,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	background: $bg;
+
 	transition:
 		background 0.4s ease,
 		box-shadow 0.4s ease;
@@ -26,9 +38,16 @@
 		width: $container-width;
 		height: 80px;
 		margin: 0 auto;
+
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@include sp {
+			width: 100%;
+			height: 56px;
+			padding: 16px;
+		}
 	}
 
 	&__logo {
@@ -37,6 +56,10 @@
 
 			img {
 				height: 36px;
+
+				@include sp {
+					height: 24px;
+				}
 			}
 		}
 	}
@@ -44,6 +67,10 @@
 	&__nav {
 		display: flex;
 		gap: 40px;
+
+		@include sp {
+			display: none;
+		}
 	}
 
 	&__menu {
@@ -59,36 +86,36 @@
 			font-size: 16px;
 			font-weight: $fw-medium;
 			color: $main;
-			position: relative; // 擬似要素の基準
-			padding-bottom: 4px; // 線がつくスペース
+
+			position: relative;
+			padding-bottom: 4px;
 
 			span {
 				font-size: 12px;
 				margin-top: $space-xs;
 				color: $black;
-				transition: color 0.3s ease; // 色変化を滑らかに
+				transition: color 0.3s ease;
 			}
 
-			// 中央から伸びるアンダーライン
 			&::after {
 				content: '';
 				position: absolute;
-				bottom: -2px; // 線の位置（英字の下あたり）
-				left: 50%; // 中央からスタート
-				width: 0; // 最初は長さゼロ
-				height: 1px; // ロゴの縦線と同じ繊細な細さ
-				background: $main; // ロゴと同じ色
-				transition: all 0.3s ease;
-				transform: translateX(-50%); // 常に中央を維持
+				bottom: -2px;
+				left: 50%;
+				width: 0;
+				height: 1px;
+				background: $main;
+				transition: width 0.3s ease;
+				transform: translateX(-50%);
 			}
 
-			// Hover時の挙動
 			&:hover {
 				&::after {
-					width: 100%; // 全幅まで伸びる
+					width: 100%;
 				}
+
 				span {
-					color: $main; // サブテキストもメインカラーに寄せる
+					color: $main;
 				}
 			}
 		}
@@ -96,21 +123,22 @@
 
 	&__cta {
 		padding: 12px 32px;
-		box-sizing: border-box;
 		border: 1px solid $main;
 		border-radius: 50px;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+
 		font-size: 16px;
 		line-height: 1;
 		font-weight: $fw-medium;
 		color: $main;
 		background: transparent;
+
 		transition:
 			background-color 0.5s ease,
 			color 0.5s ease;
-		z-index: 0;
 
 		span {
 			font-size: 12px;
@@ -125,96 +153,78 @@
 	}
 }
 
-@media (max-width: $sp) {
-	.header {
-		&__inner {
-			width: 100%;
-			height: 56px;
-			padding: 16px;
-		}
-
-		&__logo {
-			a {
-				img {
-					height: 24px;
-				}
-			}
-		}
-
-		&__nav {
-			display: none;
-		}
-	}
-}
-
+/* Hamburger (SP only) */
 .hamburger {
 	display: none;
-}
 
-@include sp {
-	.hamburger {
+	@include sp {
 		display: flex;
 		width: 48px;
 		height: 48px;
+
 		position: fixed;
 		right: 8px;
 		top: 4px;
 		z-index: 1100;
+
 		background: none;
 		border: none;
 		cursor: pointer;
+
 		justify-content: center;
 		align-items: center;
+	}
 
+	span {
+		display: block;
+		position: absolute;
+		width: 28px;
+		height: 2px;
+		background: $main;
+		border-radius: 2px;
+
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease,
+			background 0.3s ease;
+
+		&:nth-child(1) {
+			transform: translateY(-8px);
+		}
+
+		&:nth-child(3) {
+			transform: translateY(8px);
+		}
+	}
+
+	&.is-open {
 		span {
-			display: block;
-			position: absolute; /* すべて重ねる */
-			width: 28px;
-			height: 2px;
-			background: #b08a78;
-			transition:
-				transform 0.3s ease,
-				opacity 0.3s ease,
-				background 0.3s ease;
-			border-radius: 2px;
+			background: #fff;
 
-			/* 初期位置（三本線に見せる） */
 			&:nth-child(1) {
-				transform: translateY(-8px);
+				transform: rotate(45deg);
 			}
+
 			&:nth-child(2) {
-				opacity: 1;
+				opacity: 0;
 			}
+
 			&:nth-child(3) {
-				transform: translateY(8px);
-			}
-		}
-
-		&.is-open {
-			span {
-				background: #fff;
-				transition:
-					transform 0.3s ease,
-					opacity 0.3s ease;
-
-				&:nth-child(1) {
-					transform: translateY(0) rotate(45deg);
-				}
-				&:nth-child(2) {
-					opacity: 0;
-				}
-				&:nth-child(3) {
-					transform: translateY(0) rotate(-45deg);
-				}
+				transform: rotate(-45deg);
 			}
 		}
 	}
+}
 
-	body.drawer-open {
-		overflow: hidden;
-	}
+body.drawer-open {
+	overflow: hidden;
+}
 
-	.drawer {
+/* Drawer (SP only) */
+.drawer {
+	display: none;
+
+	@include sp {
 		position: fixed;
 		inset: 0;
 		background: $main;
@@ -224,67 +234,50 @@
 
 		opacity: 0;
 		visibility: hidden;
+		pointer-events: none;
 		transform: translateY(-100%);
-		transition: 0.4s;
+		transition:
+			transform 0.4s,
+			opacity 0.4s,
+			visibility 0.4s;
 
 		z-index: $z-modal;
-
-		&::before {
-			content: '';
-			position: fixed;
-			inset: 0;
-			pointer-events: none; /* 背景クリックは無効 */
-		}
 
 		&.is-open {
 			transform: translateY(0);
 			opacity: 1;
 			visibility: visible;
+			pointer-events: auto;
 		}
 
 		&__header {
 			width: 100%;
-			display: flex;
-			align-items: center;
+			height: 56px;
+			padding: 16px;
 
 			.header__logo {
-				padding: 16px;
-				height: 24px;
-			}
-
-			img {
-				height: 24px;
-				filter: brightness(0) invert(1); /* ロゴが黒い場合、背景に合わせて白抜きにする */
+				img {
+					height: 24px;
+					filter: brightness(0) invert(1);
+				}
 			}
 		}
 
 		&__nav {
-			font-weight: $fw-bold;
-			letter-spacing: 0.2em;
 			flex: 1;
-
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-start;
-			padding-top: 120px;
 			align-items: center;
 			gap: 32px;
-		}
+			padding-top: 120px;
 
-		&__nav a {
-			font-size: 28px;
-			letter-spacing: 0.2em;
-			color: white;
-		}
-
-		/* ドロワー下部のSNSとコピーライト */
-		&__footer {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 20px;
-			padding-bottom: 20px;
+			a {
+				font-size: 28px;
+				letter-spacing: 0.2em;
+				color: #fff;
+				font-weight: $fw-bold;
+			}
 		}
 
 		&__sns {
@@ -308,6 +301,37 @@
 			color: $bg;
 			font-size: 10px;
 			text-align: left;
+		}
+
+		/* Close button (optional). If you keep it, use 2 spans in HTML. */
+		&__close {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+
+			width: 32px;
+			height: 32px;
+
+			border: none;
+			background: none;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			span {
+				position: absolute;
+				width: 24px;
+				height: 2px;
+				background: #fff;
+			}
+
+			span:nth-child(1) {
+				transform: rotate(45deg);
+			}
+			span:nth-child(2) {
+				transform: rotate(-45deg);
+			}
 		}
 	}
 }

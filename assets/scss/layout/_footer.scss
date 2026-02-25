@@ -1,3 +1,12 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _footer.scss
+   Role    : Layout
+   ----------------------------------------------------------
+   Description :
+   フッターエリアのレイアウト・コピーライト
+   ========================================================== */
+
 @use '../base/variables' as *;
 @use '../base/breakpoints' as *;
 
@@ -10,47 +19,33 @@
 		width: 1200px;
 		margin: 0 auto;
 		padding: 64px 0;
+
+		@include sp {
+			width: 100%;
+			padding: $space-lg 0;
+		}
 	}
 
 	&__logo {
 		width: 320px;
-		margin: 0 auto $space-sm auto;
+		margin: 0 auto $space-sm;
+
+		@include sp {
+			width: 200px;
+			margin: 0 auto 24px;
+		}
 
 		img {
 			display: block;
+			/* translateZ is optional; keep only if you saw rendering issues */
 			transform: translateZ(0);
 		}
 	}
 
 	&__copy {
 		color: $bg;
-	}
-}
 
-@media (max-width: $sp) {
-	.footer {
-		width: 100%;
-		text-align: center;
-		background: $second;
-
-		&__inner {
-			width: 100%;
-			margin: 0 auto;
-			padding: $space-lg 0;
-		}
-
-		&__logo {
-			width: 200px;
-			margin: 0 auto 24px auto;
-
-			img {
-				display: block;
-				transform: translateZ(0);
-			}
-		}
-
-		&__copy {
-			color: $bg;
+		@include sp {
 			font-size: 10px;
 		}
 	}
