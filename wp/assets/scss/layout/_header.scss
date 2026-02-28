@@ -1,0 +1,403 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _header.scss
+   Role    : Layout
+   ----------------------------------------------------------
+   Description :
+   固定ヘッダー・ナビゲーション・ドロワーメニュー
+   States :
+   .is-scrolled
+   .is-open
+   ========================================================== */
+
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.header {
+	width: 100%;
+	background: $bg;
+	z-index: $z-header;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	transition:
+		background 0.4s ease,
+		box-shadow 0.4s ease;
+
+	&.is-scrolled {
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		background: rgba(255, 255, 255, 0.6);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
+
+	&__inner {
+		width: $container-width;
+		height: 80px;
+		margin: 0 auto;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include sp {
+			width: 100%;
+			height: 56px;
+			padding: 16px;
+		}
+	}
+
+	&__logo {
+		a {
+			display: block;
+
+			img {
+				height: 36px;
+
+				@include sp {
+					height: 24px;
+				}
+			}
+		}
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		gap: 40px;
+
+		@include sp {
+			display: none;
+		}
+	}
+
+	/* =========================================
+     PC Menu (WP menu output: ul > li > a)
+     - PCは Walker で menu__jp / menu__en を出す想定
+     ========================================= */
+	&__menu {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+
+		margin: 0; // ← WPのul余白リセット
+		padding: 0; // ← WPのul余白リセット
+		list-style: none;
+
+		> li {
+			margin: 0;
+			padding: 0;
+		}
+
+		> li > a {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-decoration: none;
+
+			line-height: 1;
+			font-size: 16px;
+			font-weight: $fw-medium;
+			color: $main;
+
+			position: relative;
+			padding-bottom: 4px;
+		}
+
+		/* Walker の出力（PCのみ） */
+		.menu__jp {
+			/* 上段（日本語） */
+			font-size: 16px;
+			font-weight: $fw-medium;
+			color: $main;
+			letter-spacing: 0.02em;
+		}
+
+		.menu__en {
+			/* 下段（英語=description） */
+			font-size: 12px;
+			margin-top: $space-xs;
+			color: $black;
+			transition: color 0.3s ease;
+			letter-spacing: 0.08em;
+		}
+
+		> li > a::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 50%;
+			width: 0;
+			height: 1px;
+			background: $main;
+			transition: width 0.3s ease;
+			transform: translateX(-50%);
+		}
+
+		> li > a:hover::after {
+			width: 100%;
+		}
+
+		> li > a:hover .menu__en {
+			color: $main;
+		}
+	}
+
+	/* CTA（Contact別タブ導線想定） */
+	&__cta {
+		padding: 12px 32px;
+		border: 1px solid $main;
+		border-radius: 50px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		font-size: 16px;
+		line-height: 1;
+		font-weight: $fw-medium;
+		color: $main;
+		background: transparent;
+
+		transition:
+			background-color 0.5s ease,
+			color 0.5s ease;
+
+		span {
+			font-size: 12px;
+			margin-top: $space-xs;
+			color: $black;
+		}
+
+		&:hover {
+			color: #fff;
+			background-color: $second;
+		}
+	}
+}
+
+/* Hamburger (SP only) */
+.hamburger {
+	display: none;
+
+	@include sp {
+		display: flex;
+		width: 48px;
+		height: 48px;
+
+		position: fixed;
+		right: 8px;
+		top: 4px;
+		z-index: 1100;
+
+		background: none;
+		border: none;
+		cursor: pointer;
+
+		justify-content: center;
+		align-items: center;
+	}
+
+	span {
+		display: block;
+		position: absolute;
+		width: 28px;
+		height: 2px;
+		background: $main;
+		border-radius: 2px;
+
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease,
+			background 0.3s ease;
+
+		&:nth-child(1) {
+			transform: translateY(-8px);
+		}
+
+		&:nth-child(3) {
+			transform: translateY(8px);
+		}
+	}
+
+	&.is-open {
+		span {
+			background: #fff;
+
+			&:nth-child(1) {
+				transform: rotate(45deg);
+			}
+
+			&:nth-child(2) {
+				opacity: 0;
+			}
+
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+body.drawer-open {
+	overflow: hidden;
+}
+
+/* Drawer (SP only) */
+.drawer {
+	display: none;
+
+	@include sp {
+		position: fixed;
+		inset: 0;
+		background: $main;
+
+		display: flex;
+		flex-direction: column;
+
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transform: translateY(-100%);
+		transition:
+			transform 0.4s,
+			opacity 0.4s,
+			visibility 0.4s;
+
+		z-index: $z-modal;
+
+		&.is-open {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+		}
+
+		&__header {
+			width: 100%;
+			height: 56px;
+			padding: 16px;
+
+			.header__logo {
+				img {
+					height: 24px;
+					filter: brightness(0) invert(1);
+				}
+			}
+		}
+
+		&__nav {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 32px;
+			padding-top: 120px;
+
+			/* SPは WPメニュー（英語ラベルのみ）: ul > li > a */
+			.drawer__menu {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 32px;
+
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.drawer__menu > li {
+				margin: 0;
+				padding: 0;
+			}
+
+			.drawer__menu > li > a {
+				font-size: 28px;
+				letter-spacing: 0.2em;
+				color: #fff;
+				font-weight: $fw-bold;
+				text-decoration: none;
+			}
+
+			/* ドロワー内にContact CTAを置く場合 */
+			.drawer__contact {
+				font-size: 28px;
+				letter-spacing: 0.2em;
+				color: #fff;
+				font-weight: $fw-bold;
+				text-decoration: none;
+			}
+		}
+
+		&__sns {
+			position: absolute;
+			right: 20px;
+			bottom: 40px;
+
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			.sns-icon img {
+				width: 43px;
+				height: 43px;
+			}
+		}
+
+		&__copy {
+			width: 100%;
+			padding-left: 16px;
+			color: $bg;
+			font-size: 10px;
+			text-align: left;
+		}
+
+		/* Close button (optional). If you keep it, use 2 spans in HTML. */
+		&__close {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+
+			width: 32px;
+			height: 32px;
+
+			border: none;
+			background: none;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			span {
+				position: absolute;
+				width: 24px;
+				height: 2px;
+				background: #fff;
+			}
+
+			span:nth-child(1) {
+				transform: rotate(45deg);
+			}
+			span:nth-child(2) {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+/* ==========================================================
+   WP管理バー対策（最小差分）
+   ========================================================== */
+.admin-bar .header {
+  top: 32px; // PC管理バー高さ
+}
+
+@media (max-width: 782px) {
+  .admin-bar .header {
+    top: 46px; // モバイル管理バー高さ
+  }
+}

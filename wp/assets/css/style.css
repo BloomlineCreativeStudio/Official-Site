@@ -342,6 +342,9 @@ main .main__inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 40px;
 }
 @media (max-width: 768px) {
@@ -349,14 +352,29 @@ main .main__inner {
     display: none;
   }
 }
+.header {
+  /* =========================================
+      PC Menu (WP menu output: ul > li > a)
+      - PCは Walker で menu__jp / menu__en を出す想定
+      ========================================= */
+}
 .header__menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 32px;
-  margin-top: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.header__menu a {
+.header__menu > li {
+  margin: 0;
+  padding: 0;
+}
+.header__menu > li > a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -367,6 +385,7 @@ main .main__inner {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-decoration: none;
   line-height: 1;
   font-size: 16px;
   font-weight: 500;
@@ -374,14 +393,26 @@ main .main__inner {
   position: relative;
   padding-bottom: 4px;
 }
-.header__menu a span {
+.header__menu {
+  /* Walker の出力（PCのみ） */
+}
+.header__menu .menu__jp {
+  /* 上段（日本語） */
+  font-size: 16px;
+  font-weight: 500;
+  color: #b08a78;
+  letter-spacing: 0.02em;
+}
+.header__menu .menu__en {
+  /* 下段（英語=description） */
   font-size: 12px;
   margin-top: 4px;
   color: #2b2b2b;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
+  letter-spacing: 0.08em;
 }
-.header__menu a::after {
+.header__menu > li > a::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -394,11 +425,14 @@ main .main__inner {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-.header__menu a:hover::after {
+.header__menu > li > a:hover::after {
   width: 100%;
 }
-.header__menu a:hover span {
+.header__menu > li > a:hover .menu__en {
   color: #b08a78;
+}
+.header {
+  /* CTA（Contact別タブ導線想定） */
 }
 .header__cta {
   padding: 12px 32px;
@@ -560,12 +594,44 @@ body.drawer-open {
             align-items: center;
     gap: 32px;
     padding-top: 120px;
+    /* SPは WPメニュー（英語ラベルのみ）: ul > li > a */
   }
-  .drawer__nav a {
+  .drawer__nav .drawer__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .drawer__nav .drawer__menu > li {
+    margin: 0;
+    padding: 0;
+  }
+  .drawer__nav .drawer__menu > li > a {
     font-size: 28px;
     letter-spacing: 0.2em;
     color: #fff;
     font-weight: 700;
+    text-decoration: none;
+  }
+  .drawer__nav {
+    /* ドロワー内にContact CTAを置く場合 */
+  }
+  .drawer__nav .drawer__contact {
+    font-size: 28px;
+    letter-spacing: 0.2em;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
   }
   .drawer__sns {
     position: absolute;
@@ -628,6 +694,18 @@ body.drawer-open {
   }
 }
 
+/* ==========================================================
+   WP管理バー対策（最小差分）
+   ========================================================== */
+.admin-bar .header {
+  top: 32px;
+}
+
+@media (max-width: 782px) {
+  .admin-bar .header {
+    top: 46px;
+  }
+}
 /* ==========================================================
    Project : Bloomline creative Studio
    File    : _footer.scss

@@ -1,0 +1,122 @@
+<section id="profile" class="profile">
+	<div class="section-header">
+		<div class="section-header__title">
+			<span class="section-header__num">03</span>
+			<div class="section-header__text">
+				<h2 class="section-header__main">Profile</h2>
+				<p class="section-header__sub">プロフィール</p>
+			</div>
+		</div>
+		<p class="section-header__lead">
+			これまでの経験と、大切にしている制作の姿勢について。
+		</p>
+	</div>
+
+	<div class="profile__container">
+		<!-- 左カラム -->
+		<div class="profile__visual">
+			<figure class="profile__portrait">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/profile.png" alt="Sakura" />
+			</figure>
+
+			<div class="profile__sns">
+				<p class="profile__follow">Follow me!!</p>
+
+				<a
+					href="https://x.com/BloomlineSakura?s=20"
+					class="sns-btn"
+					target="_blank">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/sns-x.svg" alt="x" />
+				</a>
+				<a
+					href="https://www.instagram.com/bloomline_creative/"
+					class="sns-btn"
+					target="_blank">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/sns-ig.svg" alt="Instagram" />
+				</a>
+			</div>
+		</div>
+
+		<!-- 右カラム -->
+		<div class="profile__content">
+			<header class="profile__header">
+				<h2>Sakura <span>Bloomline creative Studio</span></h2>
+				<p class="profile__role">
+					Web Designer / Markup Engineer / Director
+				</p>
+			</header>
+
+			<div class="profile__text">
+				<p>
+					東京都出身。Web制作歴15年以上。<br />
+					構成設計からデザイン、実装まで一貫して対応しています。<br />
+					<br />
+					Bloomline creative Studioでは、単に「作る」だけではなく、<br
+						class="pc_br" />
+					目的や背景を丁寧に理解し、成果につながる設計と表現を大切にしています。<br />
+					<br />
+					Web制作を軸に、ディレクションや紙媒体デザインにも柔軟に対応可能です。<br />
+					仕様設計やPM業務、ECサイト運用、外部制作会社との連携など、<br
+						class="pc_br" />
+					実制作だけでなくプロジェクト全体を見据えた経験があります。<br />
+					<br />
+					実績は非公開案件が中心のため掲載していませんが、<br
+						class="pc_br" />
+					ご相談時に概要をお伝えすることが可能です。お気軽にご相談ください。
+				</p>
+			</div>
+
+			<!-- スキル -->
+			<section class="skills">
+				<h3 class="skills__title">
+					スキル
+					<span class="skills__bg">Skills</span>
+				</h3>
+
+				<div class="skills__group">
+					<h4>デザイン</h4>
+					<ul class="tag-list">
+						<li>Figma</li>
+						<li>Photoshop</li>
+						<li>Illustrator</li>
+						<li>Affinity</li>
+						<li>Sketch</li>
+					</ul>
+				</div>
+
+				<div class="skills__group">
+					<h4>フロントエンド</h4>
+					<ul class="tag-list">
+						<li>HTML</li>
+						<li>CSS3</li>
+						<li>SCSS</li>
+						<li>Javascript</li>
+						<li>jQuery</li>
+						<li>PHP</li>
+					</ul>
+				</div>
+
+				<div class="skills__group">
+					<h4>CMS / 開発環境</h4>
+					<ul class="tag-list">
+						<li>Wordpress</li>
+						<li>Smarty</li>
+						<li>GitHub</li>
+						<li>VS Code</li>
+					</ul>
+				</div>
+
+				<div class="skills__group">
+					<h4>解析・業務ツール</h4>
+					<ul class="tag-list">
+						<li>JIRA</li>
+						<li>Confluence</li>
+						<li>Redmine</li>
+						<li>Backlog</li>
+						<li>Adobe Analytics</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+</section>

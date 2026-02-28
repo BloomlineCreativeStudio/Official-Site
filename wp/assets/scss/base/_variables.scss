@@ -1,0 +1,50 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _variables.scss
+   Role    : Foundation
+   ----------------------------------------------------------
+   Description :
+   カラー・フォント・サイズ等の変数管理
+   ========================================================== */
+
+// font family
+$font-en: 'Manrope', sans-serif;
+$font-jp: 'Zen Kaku Gothic New', sans-serif;
+$font-accent: 'Homemade Apple', cursive;
+$font-num: 'Libre Baskerville', serif;
+
+//font weight
+$fw-extralight: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+
+// color
+$main: #b08a78;
+$second: #d2bdb3;
+$bg: #fafaf8;
+$bg-second: #f4f0ed;
+$black: #2b2b2b;
+$radius: 24px;
+
+// layout
+$container-width: 1200px;
+
+// spacing
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 32px;
+$space-xl: 64px;
+
+// radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+
+// z-index
+$z-header: 500;
+$z-modal: 1000;

@@ -1,0 +1,155 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _contact-page.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   お問い合わせページ
+   ========================================================== */
+
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.header-simple {
+  position: static;   // fixed解除
+  box-shadow: none;
+  border-bottom: 1px solid $main;
+
+  .header-simple__innner {
+	padding-left: 16px;
+  }
+}
+
+.contact-page {
+	padding: 0;
+	width: 1200px;
+	margin: 0 auto;
+
+	@include sp {
+		margin: 0;
+		width: 100%;
+	}
+
+	.section-header {
+		margin: 40px 0;
+	}
+
+	&__container {
+		width: 900px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+
+		@include sp {
+			width: 100%;
+			padding: 0 16px;
+		}
+	}
+
+	&__lead {
+		line-height: 1.5;
+		font-size: 20px;
+		font-family: $font-jp;
+		letter-spacing: 0.05em;
+	}
+
+	&__formarea {
+		width: 900px;
+		margin: 0 auto;
+		padding: 16px;
+
+		@include sp {
+			margin: 0;
+			width: 100%;
+		}
+
+		.item {
+			padding: 24px 0 8px 0;
+			font-family: $font-jp;
+			font-weight: $fw-medium;
+			color: $main;
+			font-size: 18px;
+			letter-spacing: 0.03em;
+
+			@include sp {
+				font-size: 14px;
+			}
+		}
+
+		.wpcf7-form-control {
+			width: 100%;
+		}
+
+		.wpcf7-text,
+		.wpcf7-email,
+		.wpcf7-textarea,
+		.wpcf7-select {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 4px;
+		}
+
+		.wpcf7-form-control {
+			border: 1px solid #c8c1b8;
+			transition:
+				border-color 0.2s ease,
+				box-shadow 0.2s ease;
+		}
+
+		.wpcf7-form-control:focus {
+			outline: none;
+		}
+
+		.wpcf7-form-control:focus-visible {
+			border-color: $main;
+			box-shadow: 0 0 0 2px rgba(176, 138, 120, 0.2);
+		}
+
+		.wpcf7-submit {
+			display: flex;
+			margin: 32px auto;
+			padding: 8px;
+			max-width: 300px;
+			background: $main;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+
+			transition:
+				background-color 0.5s ease,
+				color 0.5s ease;
+
+			&:hover {
+				color: #fff;
+				background-color: $second;
+			}
+		}
+
+		.wpcf7-not-valid {
+			border-color: $main;
+		}
+
+		/* 共通：メッセージ枠（成功/失敗どちらも） */
+		.wpcf7 .wpcf7-response-output {
+			margin: 24px 0 0;
+			padding: 16px 18px;
+			border-radius: 10px;
+			background: #f6f4f1;
+			color: #5a4a42;
+			line-height: 1.6;
+		}
+
+		/* 成功（sent） */
+		.wpcf7 form.sent .wpcf7-response-output {
+			border: 1px solid #c8c1b8; /* 落ち着いた枠 */
+		}
+
+		/* エラー系（invalid/unaccepted/payment-required） */
+		.wpcf7 form.invalid .wpcf7-response-output,
+		.wpcf7 form.unaccepted .wpcf7-response-output,
+		.wpcf7 form.payment-required .wpcf7-response-output {
+			border: 1px solid $main; /* ブランド寄せ */
+		}
+	}
+}
+

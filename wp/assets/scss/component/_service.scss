@@ -1,0 +1,112 @@
+/* ==========================================================
+   Project : Bloomline creative Studio
+   File    : _service.scss
+   Role    : Section
+   ----------------------------------------------------------
+   Description :
+   サービス一覧セクション（カードUI）
+   ========================================================== */
+
+@use '../base/variables' as *;
+@use '../base/breakpoints' as *;
+
+.service {
+	@include sp {
+		padding: 0 16px;
+	}
+
+	.service-container {
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 72px;
+
+			@include sp {
+				display: flex;
+				flex-direction: column;
+				gap: 48px;
+
+				/* ul reset is handled in reset, but keep if needed */
+				list-style: none;
+				margin: 0;
+				padding: 48px 32px;
+
+				background-color: $bg;
+				border-radius: 60px;
+
+				.clothoid-corner {
+					clip-path: none;
+				}
+			}
+		}
+
+		&__squircle {
+			width: 352px;
+			height: 352px;
+			background-color: $bg;
+			text-align: center;
+
+			@include sp {
+				width: 100%;
+				height: auto;
+				background-color: transparent;
+
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 16px;
+			}
+		}
+
+		&__title {
+			font-family: $font-jp;
+			font-size: 30px;
+			font-weight: $fw-medium;
+			color: $main;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 72px;
+
+			span {
+				font-weight: $fw-light;
+				font-size: 16px;
+				color: $black;
+			}
+
+			@include sp {
+				margin-top: 0;
+				width: 70%;
+				align-items: flex-start;
+				font-size: 20px;
+
+				span {
+					font-size: 12px;
+				}
+			}
+		}
+
+		&__icon {
+			width: 136px;
+			height: 136px;
+			margin: 16px auto;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 100%;
+				height: auto;
+				object-fit: contain;
+			}
+
+			@include sp {
+				width: 30%;
+				height: auto;
+				margin: 0;
+			}
+		}
+	}
+}

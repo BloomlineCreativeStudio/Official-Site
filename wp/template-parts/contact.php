@@ -1,0 +1,62 @@
+<section id="contact" class="contact">
+	<div class="section-header">
+		<div class="section-header__title">
+			<span class="section-header__num">04</span>
+			<div class="section-header__text">
+				<h2 class="section-header__main">Contact</h2>
+				<p class="section-header__sub">お問い合わせ</p>
+			</div>
+		</div>
+		<p class="section-header__lead">
+			制作のご依頼やご相談、お見積りなど、まずはお気軽にお声がけください。折り返しご連絡いたします。
+		</p>
+	</div>
+
+	<div class="contact__container">
+		<div class="contact__text">
+			<p>こんなご相談、お待ちしています。</p>
+			<ul>
+				<li>・Webサイト制作のご相談</li>
+				<li>・見積もり・スケジュール確認</li>
+				<li>・既存サイト改善のご相談</li>
+				<li>・ロゴ・名刺の制作</li>
+			</ul>
+		</div>
+		<div class="contact__cta">
+			<!-- CTAボタン -->
+			<a href="<?php echo esc_url( home_url('/contact/') ); ?>" class="cta-button" target="_blank" rel="noopener noreferrer">
+				<span class="cta-text">お問い合わせはこちら</span>
+				<span class="cta-bg">Contact</span>
+			</a>
+
+			<!-- 説明文 -->
+			<p class="cta-note">DMからのご相談も受け付けています。</p>
+
+			<!-- SNS -->
+			<div class="cta-sns">
+				<p class="cta-follow">Follow me!!</p>
+
+				<div class="sns-list">
+					<a
+						href="https://x.com/BloomlineSakura?s=20"
+						class="sns-btn"
+						target="_blank"
+					>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/contact_sns-x.svg" alt="X" />
+					</a>
+
+					<a
+						href="https://www.instagram.com/bloomline_creative/"
+						class="sns-btn"
+						target="_blank"
+					>
+						<img
+							src="<?php echo get_template_directory_uri(); ?>/assets/img/contact_sns-ig.svg"
+							alt="Instagram"
+						/>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
